@@ -1,23 +1,32 @@
 {
-    "enable_prompt_injection_scanner": false,
+    "enable_prompt_injection_scanner": true,
     "prompt_injection_threshold": 0.6,
     "pii_scan_redact": true,
     "pii_scan_threshold": 0.1,
     "pii_entities_to_scan": [
-        "GENERIC_SECRET",
-        "PHONE_NUMBER"
+        "ACCOUNT_NUMBER",
+        "PHONE_NUMBER",
+        "PASSWORD",
+        "EMAIL_ADDRESS",
+        "CREDIT_CARD_NUMBER"
     ],
     "custom_regex_patterns": [
         {
+            "name": "ACCOUNT_NUMBER",
+            "expressions": ["\\b(?:\\d[\\s-]*){13,19}\\b"],
+            "context": ["account", "Account"],
+            "score": 0.95
+        },
+        {
             "name": "PHONE_NUMBER",
-            "expressions": ["\b\d{3}-\d{4}\b"],
+            "expressions": ["\\b\\d{10}\\b"],
             "context": ["phone"],
             "score": 0.95
         },
         {
-            "name": "GENERIC_SECRET",
-            "expressions": ["TOP-SECRET-.*"],
-            "context": ["secret"],
+            "name": "PASSWORD",
+            "expressions": ["\\b[a-zA-Z0-9]{8,}\\b"],
+            "context": ["password", "Password"],
             "score": 0.95
         }
     ]

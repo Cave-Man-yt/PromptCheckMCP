@@ -1,1 +1,34 @@
-[]
+[
+    {
+        "name": "ACCOUNT_NUMBER",
+        "expressions": [
+            "\\b(?:\\d[\\s-]*){13,19}\\b"
+        ],
+        "context": [
+            "account",
+            "Account"
+        ],
+        "score": 0.95
+    },
+    {
+        "name": "PHONE_NUMBER",
+        "expressions": [
+            "\\b\\d{10}\\b"
+        ],
+        "context": [
+            "phone"
+        ],
+        "score": 0.95
+    },
+    {
+        "name": "PASSWORD",
+        "expressions": [
+            "\\b[a-zA-Z0-9]{8,}\\b"
+        ],
+        "context": [
+            "password",
+            "Password"
+        ],
+        "score": 0.95
+    }
+]
